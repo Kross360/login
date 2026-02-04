@@ -41,7 +41,7 @@
             height: 100%;
             position: relative;
             z-index: 2;
-            padding: 0 60px;
+            padding: 0 40px;
             display: flex;
             align-items: center;
         }
@@ -49,10 +49,10 @@
         /* Ícones do topo com animação de entrada */
         .top-icons {
             position: absolute;
-            top: 40px;
-            right: 60px;
+            top: 25px;
+            right: 40px;
             display: flex;
-            gap: 20px;
+            gap: 12px;
             animation: slideInFromRight 0.8s ease-out;
         }
 
@@ -70,31 +70,31 @@
         .icon-box {
             background: rgba(255, 255, 255, 0.9);
             color: #1e2c3a;
-            width: 42px;
-            height: 42px;
+            width: 32px;
+            height: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .icon-box:hover { 
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
         }
 
         .icon-box svg {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
         }
 
         /* Login box com animação de entrada */
         .login-box {
-            width: 380px;
+            width: 280px;
             animation: slideInFromLeft 0.8s ease-out;
         }
 
@@ -112,8 +112,8 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 8px;
+            gap: 10px;
+            margin-bottom: 5px;
             animation: fadeInDown 1s ease-out;
         }
 
@@ -129,7 +129,7 @@
         }
 
         .logo-icon {
-            font-size: 38px;
+            font-size: 28px;
             animation: rotateIn 1s ease-out;
         }
 
@@ -145,16 +145,16 @@
         }
 
         .logo-icon svg {
-            width: 38px;
-            height: 38px;
+            width: 28px;
+            height: 28px;
             fill: #3498db;
-            filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.5));
+            filter: drop-shadow(0 0 8px rgba(52, 152, 219, 0.5));
         }
 
         .logo-text {
-            font-size: 42px;
+            font-size: 32px;
             font-weight: 900;
-            letter-spacing: -2px;
+            letter-spacing: -1.5px;
             background: linear-gradient(135deg, #ffffff 0%, #3498db 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -162,9 +162,9 @@
         }
 
         .welcome-msg {
-            font-size: 11px;
-            letter-spacing: 0.5px;
-            margin-bottom: 35px;
+            font-size: 9px;
+            letter-spacing: 0.3px;
+            margin-bottom: 20px;
             opacity: 0.8;
             animation: fadeIn 1.2s ease-out;
         }
@@ -177,12 +177,12 @@
         .input-group-label {
             display: flex;
             align-items: center;
-            gap: 15px;
-            font-size: 12px;
+            gap: 10px;
+            font-size: 9px;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             color: #3498db;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
         }
 
         .line {
@@ -212,14 +212,14 @@
         /* Input field com animações */
         .input-field {
             background: rgba(255, 255, 255, 0.05);
-            height: 50px;
-            border-radius: 12px;
+            height: 38px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
-            padding: 0 20px;
-            margin-bottom: 15px;
+            padding: 0 15px;
+            margin-bottom: 10px;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-left: 4px solid #3498db;
+            border-left: 3px solid #3498db;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -242,10 +242,10 @@
         }
 
         .input-field svg {
-            width: 18px;
-            height: 18px;
+            width: 14px;
+            height: 14px;
             opacity: 0.6;
-            margin-right: 15px;
+            margin-right: 10px;
             fill: currentColor;
             transition: all 0.3s;
         }
@@ -261,10 +261,10 @@
             border: none;
             color: white;
             width: 100%;
-            font-size: 13px;
+            font-size: 11px;
             font-weight: 500;
             outline: none;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .input-field input::placeholder {
@@ -283,19 +283,19 @@
         /* Botões com animações */
         .button-row {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 8px;
+            margin-top: 12px;
         }
 
         button {
-            height: 48px;
+            height: 36px;
             border: none;
-            border-radius: 12px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: 800;
-            font-size: 11px;
+            font-size: 9px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 0.8px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -331,30 +331,30 @@
 
         .forgot-password {
             display: inline-block;
-            margin-top: 25px;
-            font-size: 10px;
+            margin-top: 15px;
+            font-size: 8px;
             color: white;
             text-decoration: none;
             opacity: 0.6;
-            border-left: 3px solid #3498db;
-            padding-left: 10px;
+            border-left: 2px solid #3498db;
+            padding-left: 8px;
             transition: all 0.3s;
         }
 
         .forgot-password:hover { 
             opacity: 1;
-            padding-left: 18px;
+            padding-left: 12px;
             color: #3498db;
         }
 
         /* Footer */
         .footer-info {
             position: absolute;
-            bottom: 35px;
-            left: 80px;
-            font-size: 11px;
+            bottom: 20px;
+            left: 40px;
+            font-size: 8px;
             opacity: 0.4;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
             animation: fadeIn 2s ease-out;
         }
 
@@ -362,23 +362,23 @@
         .notification {
             position: fixed;
             top: -100px;
-            right: 30px;
+            right: 20px;
             background: rgba(20, 20, 20, 0.95);
             color: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            padding: 10px 15px;
+            border-radius: 6px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.5);
             z-index: 1000;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: flex;
             align-items: center;
-            gap: 12px;
-            min-width: 280px;
-            border-left: 4px solid;
+            gap: 10px;
+            min-width: 220px;
+            border-left: 3px solid;
         }
 
         .notification.show {
-            top: 30px;
+            top: 20px;
         }
 
         .notification.success {
@@ -398,8 +398,8 @@
         }
 
         .notification svg {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             flex-shrink: 0;
         }
 
@@ -414,23 +414,23 @@
 
         .notification-title {
             font-weight: 700;
-            font-size: 12px;
-            margin-bottom: 3px;
-            letter-spacing: 0.5px;
+            font-size: 10px;
+            margin-bottom: 2px;
+            letter-spacing: 0.3px;
         }
 
         .notification-message {
-            font-size: 11px;
+            font-size: 9px;
             opacity: 0.85;
-            line-height: 1.4;
+            line-height: 1.3;
         }
 
         .notification-close {
             cursor: pointer;
             opacity: 0.6;
             transition: opacity 0.3s;
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
         }
 
         .notification-close:hover {
@@ -438,8 +438,8 @@
         }
 
         .notification-close svg {
-            width: 20px;
-            height: 20px;
+            width: 16px;
+            height: 16px;
             fill: currentColor;
         }
 
@@ -447,7 +447,7 @@
         .loading-spinner {
             display: none;
             position: absolute;
-            right: 20px;
+            right: 15px;
             top: 50%;
             transform: translateY(-50%);
         }
@@ -457,9 +457,9 @@
         }
 
         .spinner {
-            width: 24px;
-            height: 24px;
-            border: 3px solid rgba(52, 152, 219, 0.3);
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(52, 152, 219, 0.3);
             border-top-color: #3498db;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
@@ -471,11 +471,11 @@
 
         /* Responsividade para DPI 400 landscape */
         @media (max-height: 600px) {
-            .container { padding: 0 60px; }
-            .login-box { width: 420px; }
-            .logo-text { font-size: 48px; }
-            .input-field { height: 55px; }
-            button { height: 50px; }
+            .container { padding: 0 30px; }
+            .login-box { width: 260px; }
+            .logo-text { font-size: 28px; }
+            .input-field { height: 34px; }
+            button { height: 32px; font-size: 8px; }
         }
     </style>
 </head>
