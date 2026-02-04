@@ -41,7 +41,7 @@
             height: 100%;
             position: relative;
             z-index: 2;
-            padding: 0 80px;
+            padding: 0 60px;
             display: flex;
             align-items: center;
         }
@@ -70,12 +70,12 @@
         .icon-box {
             background: rgba(255, 255, 255, 0.9);
             color: #1e2c3a;
-            width: 50px;
-            height: 50px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
@@ -87,14 +87,14 @@
         }
 
         .icon-box svg {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             fill: currentColor;
         }
 
         /* Login box com animação de entrada */
         .login-box {
-            width: 480px;
+            width: 380px;
             animation: slideInFromLeft 0.8s ease-out;
         }
 
@@ -112,8 +112,8 @@
         .logo-section {
             display: flex;
             align-items: center;
-            gap: 20px;
-            margin-bottom: 10px;
+            gap: 15px;
+            margin-bottom: 8px;
             animation: fadeInDown 1s ease-out;
         }
 
@@ -129,7 +129,7 @@
         }
 
         .logo-icon {
-            font-size: 48px;
+            font-size: 38px;
             animation: rotateIn 1s ease-out;
         }
 
@@ -145,14 +145,14 @@
         }
 
         .logo-icon svg {
-            width: 48px;
-            height: 48px;
+            width: 38px;
+            height: 38px;
             fill: #3498db;
             filter: drop-shadow(0 0 10px rgba(52, 152, 219, 0.5));
         }
 
         .logo-text {
-            font-size: 56px;
+            font-size: 42px;
             font-weight: 900;
             letter-spacing: -2px;
             background: linear-gradient(135deg, #ffffff 0%, #3498db 100%);
@@ -162,9 +162,9 @@
         }
 
         .welcome-msg {
-            font-size: 13px;
+            font-size: 11px;
             letter-spacing: 0.5px;
-            margin-bottom: 50px;
+            margin-bottom: 35px;
             opacity: 0.8;
             animation: fadeIn 1.2s ease-out;
         }
@@ -212,12 +212,12 @@
         /* Input field com animações */
         .input-field {
             background: rgba(255, 255, 255, 0.05);
-            height: 65px;
-            border-radius: 15px;
+            height: 50px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
-            padding: 0 25px;
-            margin-bottom: 20px;
+            padding: 0 20px;
+            margin-bottom: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: 4px solid #3498db;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -242,10 +242,10 @@
         }
 
         .input-field svg {
-            width: 22px;
-            height: 22px;
+            width: 18px;
+            height: 18px;
             opacity: 0.6;
-            margin-right: 18px;
+            margin-right: 15px;
             fill: currentColor;
             transition: all 0.3s;
         }
@@ -261,7 +261,7 @@
             border: none;
             color: white;
             width: 100%;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 500;
             outline: none;
             letter-spacing: 0.5px;
@@ -283,17 +283,17 @@
         /* Botões com animações */
         .button-row {
             display: flex;
-            gap: 15px;
-            margin-top: 30px;
+            gap: 12px;
+            margin-top: 20px;
         }
 
         button {
-            height: 58px;
+            height: 48px;
             border: none;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
             font-weight: 800;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -331,13 +331,13 @@
 
         .forgot-password {
             display: inline-block;
-            margin-top: 35px;
-            font-size: 11px;
+            margin-top: 25px;
+            font-size: 10px;
             color: white;
             text-decoration: none;
             opacity: 0.6;
             border-left: 3px solid #3498db;
-            padding-left: 12px;
+            padding-left: 10px;
             transition: all 0.3s;
         }
 
@@ -362,23 +362,23 @@
         .notification {
             position: fixed;
             top: -100px;
-            right: 40px;
+            right: 30px;
             background: rgba(20, 20, 20, 0.95);
             color: white;
-            padding: 20px 30px;
+            padding: 15px 20px;
             border-radius: 8px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
             z-index: 1000;
             transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             display: flex;
             align-items: center;
-            gap: 15px;
-            min-width: 320px;
-            border-left: 5px solid;
+            gap: 12px;
+            min-width: 280px;
+            border-left: 4px solid;
         }
 
         .notification.show {
-            top: 40px;
+            top: 30px;
         }
 
         .notification.success {
@@ -398,8 +398,8 @@
         }
 
         .notification svg {
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             flex-shrink: 0;
         }
 
@@ -414,13 +414,13 @@
 
         .notification-title {
             font-weight: 700;
-            font-size: 14px;
-            margin-bottom: 4px;
+            font-size: 12px;
+            margin-bottom: 3px;
             letter-spacing: 0.5px;
         }
 
         .notification-message {
-            font-size: 12px;
+            font-size: 11px;
             opacity: 0.85;
             line-height: 1.4;
         }
