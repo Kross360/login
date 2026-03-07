@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Login | CAPITAL ONLINE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ffffff;
+            --bg-overlay: rgba(10, 10, 10, 0.75);
+            --input-bg: rgba(255, 255, 255, 0.05);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --male: #3498db;
+            --female: #ff69b4;
+            --error: #ff4b2b;
+            --success: #2ecc71;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+                        url('fundo.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 260px;
+            padding: 6px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            font-size: 0.6rem;
+            margin-bottom: 18px;
+            opacity: 0.9;
+        }
+
+        .page { display: none; }
+        .page.active { display: block; animation: fadeIn 0.3s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .input-box {
+            width: 100%;
+            background: var(--input-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 6px;
+            min-height: 36px;
+            transition: var(--transition);
+        }
+
+        .input-box:focus-within {
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .input-box i {
+            font-size: 0.8rem;
+            width: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 8px;
+        }
+
+        .input-content { flex: 1; }
+
+        .input-content input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 0.75rem;
+            line-height: 1.4;
+        }
+
+        .input-content input::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* ===== GÊNERO ===== */
+        .gender-label {
+            font-size: 0.6rem;
+            text-align: left;
+            margin-bottom: 6px;
+            opacity: 0.7;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .gender-selection {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 14px;
+        }
+
+        .gender-card {
+            flex: 1;
+            background: var(--input-bg);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gender-card svg {
+            width: 20px;
+            height: 20px;
+            margin-bottom: 4px;
+        }
+
+        .gender-card p {
+            font-size: 0.55rem;
+            margin: 0;
+        }
+
+        .gender-card:hover { opacity: 0.85; }
+        .gender-card.selected.male   { border-color: var(--male);   opacity: 1; background: rgba(52,152,219,0.15); }
+        .gender-card.selected.female { border-color: var(--female); opacity: 1; background: rgba(255,105,180,0.15); }
+
+        /* ===== BOTÕES ===== */
+        .btn-main {
+            width: 100%;
+            padding: 9px;
+            margin-top: 6px;
+            background: var(--primary);
+            border: none;
+            color: #000;
+            font-weight: 700;
+            font-size: 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-main:hover  { background: rgba(255,255,255,0.85); }
+        .btn-main:active { transform: scale(0.98); }
+        .btn-main:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .link-swap {
+            font-size: 0.55rem;
+            margin-top: 14px;
+            color: #aaa;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+        }
+
+        .link-swap:hover { color: #fff; }
+
+        /* ===== NOTIFICAÇÕES ===== */
+        #notification-container {
+            position: fixed;
+            top: 12px;
+            right: 12px;
+            z-index: 9999;
+        }
+
+        .toast {
+            background: rgba(20, 20, 20, 0.95);
+            border-left: 3px solid var(--primary);
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-bottom: 6px;
+            min-width: 200px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        .toast.error   { border-left-color: var(--error); }
+        .toast.success { border-left-color: var(--success); }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to   { transform: translateX(0);    opacity: 1; }
+        }
+
+        @keyframes slideOut {
+            from { transform: translateX(0);    opacity: 1; }
+            to   { transform: translateX(100%); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="notification-container"></div>
+
+<div class="container">
+    <h1 id="mainTitle">LOGIN</h1>
+    <p class="subtitle">BEM-VINDO AO CAPITAL NEXUS</p>
+
+    <!-- ===== TELA DE LOGIN ===== -->
+    <div id="loginPage" class="page active">
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <div class="input-content">
+                <input type="password" id="loginPass" placeholder="Senha de acesso" maxlength="20">
+            </div>
+        </div>
+        <button class="btn-main" id="btnLogin" onclick="enviarLogin()">ENTRAR</button>
+        <p class="link-swap" onclick="irParaRegistro()">AINDA NÃO TENHO UMA CONTA</p>
+    </div>
+
+    <!-- ===== TELA DE REGISTRO ===== -->
+    <div id="registerPage" class="page">
+
+        <!-- Senha -->
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <div class="input-content">
+                <input type="password" id="regPass" placeholder="Crie uma senha" maxlength="20">
+            </div>
+        </div>
+
+        <!-- Confirmar senha -->
+        <div class="input-box">
+            <i class="fa-solid fa-lock"></i>
+            <div class="input-content">
+                <input type="password" id="regPassConfirm" placeholder="Confirme a senha" maxlength="20">
+            </div>
+        </div>
+
+        <!-- Gênero -->
+        <p class="gender-label">Selecione o sexo</p>
+        <div class="gender-selection">
+            <div class="gender-card male" id="cardMasc" onclick="selectGender(this, 1)">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M9,9C10.66,9 12,7.66 12,6C12,4.34 10.66,3 9,3C7.34,3 6,4.34 6,6C6,7.66 7.34,9 9,9M9,11C6.34,11 1,12.34 1,15V17H17V15C17,12.34 11.66,11 9,11M21,11V13H19V11H17V9H19V7H21V9H23V11H21Z"/>
+                </svg>
+                <p>Masculino</p>
+            </div>
+            <div class="gender-card female" id="cardFem" onclick="selectGender(this, 2)">
+                <svg viewBox="0 0 24 24" fill="white">
+                    <path d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14M16,2V4H14V2H12V4H10V2H8V4H10V6H8V8H10V6H12V8H14V6H16V8H18V6H16V4H18V2H16Z"/>
+                </svg>
+                <p>Feminino</p>
+            </div>
+        </div>
+
+        <button class="btn-main" id="btnRegister" onclick="enviarRegistro()">CRIAR CONTA</button>
+        <p class="link-swap" onclick="irParaLogin()">JÁ TENHO UMA CONTA</p>
+    </div>
+</div>
+
+<script>
+    // ========== ESTADO ==========
+    var selectedGender = null; // 1 = Masculino, 2 = Feminino (igual ao .pwn)
+    var bloqueado = false;
+
+    // ========== NAVEGAÇÃO ==========
+    function irParaLogin() {
+        togglePage('loginPage', 'LOGIN');
+    }
+
+    function irParaRegistro() {
+        togglePage('registerPage', 'REGISTRO');
+    }
+
+    function togglePage(pageId, title) {
+        document.querySelectorAll('.page').forEach(function(p) {
+            p.classList.remove('active');
+        });
+        document.getElementById(pageId).classList.add('active');
+        document.getElementById('mainTitle').innerText = title;
+        bloqueado = false;
+        document.getElementById('btnLogin').disabled    = false;
+        document.getElementById('btnRegister').disabled = false;
+    }
+
+    // ========== GÊNERO ==========
+    // gender: 1 = Masculino, 2 = Feminino (bate com GetJsonInt no .pwn)
+    function selectGender(el, gender) {
+        document.querySelectorAll('.gender-card').forEach(function(c) {
+            c.classList.remove('selected');
+        });
+        el.classList.add('selected');
+        selectedGender = gender;
+    }
+
+    // ========== NOTIFICAÇÕES ==========
+    function showNotify(msg, type) {
+        type = type || 'error';
+        var container = document.getElementById('notification-container');
+        var toast = document.createElement('div');
+        toast.className = 'toast ' + type;
+        var icon = type === 'error' ? 'fa-circle-exclamation' : 'fa-circle-check';
+        toast.innerHTML =
+            '<i class="fa-solid ' + icon + '"></i>' +
+            '<span>' + msg + '</span>';
+        container.appendChild(toast);
+        setTimeout(function() {
+            toast.style.animation = 'slideOut 0.4s ease forwards';
+            setTimeout(function() { toast.remove(); }, 400);
+        }, 3000);
+    }
+
+    // ========== COMUNICAÇÃO COM O SERVER ==========
+    // Formato esperado pelo CEF_HandleLogin no .pwn:
+    // { "action": "login"|"register", "data": { "password": "...", "confirm_password": "...", "gender": 1|2 } }
+    function sendToServer(action, data) {
+        var payload = JSON.stringify({ action: action, data: data });
+        if (window.geckoju && typeof window.geckoju.send === 'function') {
+            window.geckoju.send(payload);
+        } else {
+            console.log('[DEV] Enviando ao server:', payload);
+        }
+    }
+
+    // ========== LOGIN ==========
+    function enviarLogin() {
+        if (bloqueado) return;
+
+        var pass = document.getElementById('loginPass').value;
+
+        if (!pass) {
+            showNotify('Informe sua senha!');
+            return;
+        }
+        if (pass.length < 5 || pass.length > 20) {
+            showNotify('Senha deve ter entre 5 e 20 caracteres!');
+            return;
+        }
+
+        bloqueado = true;
+        document.getElementById('btnLogin').disabled = true;
+
+        sendToServer('login', {
+            password: pass
+        });
+    }
+
+    // ========== REGISTRO ==========
+    function enviarRegistro() {
+        if (bloqueado) return;
+
+        var pass    = document.getElementById('regPass').value;
+        var confirm = document.getElementById('regPassConfirm').value;
+
+        if (!pass || pass.length < 5 || pass.length > 20) {
+            showNotify('Senha deve ter entre 5 e 20 caracteres!');
+            return;
+        }
+        if (pass !== confirm) {
+            showNotify('As senhas não coincidem!');
+            return;
+        }
+        if (!selectedGender) {
+            showNotify('Selecione o sexo do personagem!');
+            return;
+        }
+
+        bloqueado = true;
+        document.getElementById('btnRegister').disabled = true;
+
+        sendToServer('register', {
+            password:         pass,
+            confirm_password: confirm,
+            gender:           selectedGender  // 1 ou 2 (int, igual GetJsonInt no .pwn)
+        });
+    }
+
+    // ========== RECEBER DO SERVER ==========
+    // Server envia: { "error": true, "message": "..." }  ou  { "success": true, "message": "..." }
+    window.geckoju.onData = function(rawData) {
+        console.log('[CEF] Recebido do server:', rawData);
+        try {
+            var obj = JSON.parse(rawData);
+
+            // Redirecionar para página correta (conta nova ou existente)
+            if (obj.account) {
+                if (obj.account === 'new') {
+                    togglePage('registerPage', 'REGISTRO');
+                } else {
+                    togglePage('loginPage', 'LOGIN');
+                }
+                return;
+            }
+
+            if (obj.error) {
+                showNotify(obj.message, 'error');
+                bloqueado = false;
+                document.getElementById('btnLogin').disabled    = false;
+                document.getElementById('btnRegister').disabled = false;
+                return;
+            }
+
+            if (obj.success) {
+                showNotify(obj.message, 'success');
+                // Não desbloqueia: server vai spawnar em ~1.5s via FinalizarLogin
+            }
+
+        } catch(e) {
+            console.error('[CEF] Erro ao parsear:', e, rawData);
+        }
+    };
+
+    window.geckoju.onReady = function() {
+        console.log('[CEF] Bridge pronta!');
+    };
+
+    // ENTER para submeter
+    document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Enter') return;
+        var loginAtivo = document.getElementById('loginPage').classList.contains('active');
+        if (loginAtivo) enviarLogin();
+        else            enviarRegistro();
+    });
+</script>
+</body>
+</html>
